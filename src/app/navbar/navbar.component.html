@@ -1,13 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <span class="navbar-brand mb-0 h1">Book Tracker</span>
-    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <div class="navbar-nav">
       <a routerLink="/" class="nav-link active">Home</a>
       <a routerLink="/books" class="nav-link">Books</a>
-      <a routerLink="/login" class="nav-link">Login</a>
+      <div *ngIf="isLoggedIn$() | async; else notLoggedIn" class="nav-link" (click)="logout()">Logout</div>
+      <ng-template #notLoggedIn>
+        <div class="nav-link" (click)="login()">Login</div>
+      </ng-template>
     </div>
   </div>
 </nav>
