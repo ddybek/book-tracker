@@ -7,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
 import { BooksComponent } from './books/books.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
@@ -16,7 +15,6 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     BooksComponent,
     BookDetailsComponent,
     AddBookComponent,
@@ -30,10 +28,6 @@ import { environment } from '../environments/environment';
       {
         path: '',
         component: HomeComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
       },
       {
         path: 'books/:isbn',
