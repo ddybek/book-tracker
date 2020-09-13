@@ -6,7 +6,7 @@
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <div class="navbar-nav">
       <a routerLink="/" class="nav-link active">Home</a>
-      <a routerLink="/books" class="nav-link">Books</a>
+      <a *ngIf="isLoggedIn$() | async" routerLink="/books" class="nav-link">Books</a>
     </div>
     <div class="navbar-nav ml-auto">
       <div *ngIf="isLoggedIn$() | async; else notLoggedIn" class="dropdown" ngbDropdown>
