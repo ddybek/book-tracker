@@ -1,6 +1,7 @@
 import { AuthService } from '../shared/auth/auth.service';
 import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -24,5 +25,9 @@ export class NavbarComponent {
 
   isLoggedIn$(): Observable<boolean> {
     return this.auth.isLoggedIn$();
+  }
+
+  userName$(): Observable<string> {
+    return this.auth.userInfo$().pipe(pluck('name'));
   }
 }

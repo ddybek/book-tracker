@@ -7,7 +7,14 @@
     <div class="navbar-nav">
       <a routerLink="/" class="nav-link active">Home</a>
       <a routerLink="/books" class="nav-link">Books</a>
-      <div *ngIf="isLoggedIn$() | async; else notLoggedIn" class="nav-link" (click)="logout()">Logout</div>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <div *ngIf="isLoggedIn$() | async; else notLoggedIn" class="dropdown" ngbDropdown>
+        <a *ngIf="userName$() | async as userName" class="nav-link dropdown-toggle" ngbDropdownToggle>{{userName}}</a>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <div class="dropdown-item" (click)="logout()" ngbDropdownItem>Logout</div>
+        </div>
+      </div>
       <ng-template #notLoggedIn>
         <div class="nav-link" (click)="login()">Login</div>
       </ng-template>
